@@ -122,6 +122,16 @@ def GetCoords():
 def GetRowReducedFormSolutionFromCoords():
     return(RowReducedFormSolution(MatrixInit(GetCoords())))
 
+def PrintPolynomialSolution(RRMatrix):
+    RowAnswers = []
+    for Row in RRMatrix:
+        RowAnswers.append(Row[-1])
+    PolynomialSolution = ""
+    for EntryIndex in range(0,len(RowAnswers)):
+        #print(str(RowAnswers[EntryIndex])+"x^"+str(EntryIndex)+" + ")
+        PolynomialSolution += (str(RowAnswers[EntryIndex])+"x^"+str(EntryIndex)+" + ")
+    print(PolynomialSolution[0:-3])
+
 #print('Test')
 #PrintMatrix(MatrixInit([[1,2],[2,3],[3,4],[4,5],[5,6]]))
 #print(SubtractRows([4,5,6],[1,2,3]))
@@ -138,4 +148,4 @@ def GetRowReducedFormSolutionFromCoords():
 #PrintMatrix(RowReducedFormSolution(MatrixInit([[0,1],[1,1.107],[2,1.225],[3,1.355],[4,1.5]])))
 #print(GetPoints()[0])
 #print(GetCoords())
-PrintMatrix(GetRowReducedFormSolutionFromCoords())
+PrintPolynomialSolution(GetRowReducedFormSolutionFromCoords())
