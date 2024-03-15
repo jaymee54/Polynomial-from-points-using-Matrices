@@ -1,5 +1,7 @@
 def GetPoints():
-    pass
+    X_output = float(input("Input your x coordinate:\n"))
+    Y_output = float(input("Input your y coordinate:\n"))
+    return([X_output,Y_output])
 
 
 def MatrixInit(Point_array):
@@ -101,6 +103,26 @@ def LowerTriangular(Matrix):
 def RowReducedFormSolution(Matrix):
     return(Unitary(LowerTriangular(UpperTriangular(Matrix))))
 
+def GetCoords():
+    CoordList = []
+    Bool = True
+    while Bool:
+        coord = GetPoints()
+        CoordList.append(coord)
+        print("Sucessfully added the point " + str(coord))
+        NewBool = False
+        Yes = ["Yes","yes","Y","y","Yeah","yeah"]
+        YesOrNo = input("Do you want to add another coordinate? y/n:\n")
+        for i in Yes:
+            if YesOrNo == i:
+                NewBool = True
+        Bool = NewBool
+    return(CoordList)
+
+def GetRowReducedFormSolutionFromCoords():
+    return(RowReducedFormSolution(MatrixInit(GetCoords())))
+
+#print('Test')
 #PrintMatrix(MatrixInit([[1,2],[2,3],[3,4],[4,5],[5,6]]))
 #print(SubtractRows([4,5,6],[1,2,3]))
 #print(FirstNonZeroEntry([0,0,1,0,0]))
@@ -113,5 +135,7 @@ def RowReducedFormSolution(Matrix):
 #PrintMatrix(Unitary(LowerTriangular(UpperTriangular(MatrixInit([[1,2],[2,4],[3,4],[4,8],[5,10]])))))
 #PrintMatrix(RowReducedFormSolution(MatrixInit([[1,2],[2,4],[3,4],[4,8],[5,10]])))
 #PrintMatrix(RowReducedFormSolution(MatrixInit([[0,0],[1,0.003],[2,0.009],[3,0.029],[4,0.088],[5,0.237],[6,0.5],[7,0.763],[8,0.912],[9,0.971],[10,0.991],[11,0.997],[12,1]])))
-print('Test')
-PrintMatrix(RowReducedFormSolution(MatrixInit([[0,0],[1,0.009],[2,0.088],[3,0.5],[4,0.912],[5,0.971],[6,1]])))
+#PrintMatrix(RowReducedFormSolution(MatrixInit([[0,1],[1,1.107],[2,1.225],[3,1.355],[4,1.5]])))
+#print(GetPoints()[0])
+#print(GetCoords())
+PrintMatrix(GetRowReducedFormSolutionFromCoords())
